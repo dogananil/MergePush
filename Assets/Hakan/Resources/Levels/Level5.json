@@ -1,0 +1,22 @@
+{
+  "loseGold": 25,
+
+  "winGold": 75,
+
+  "priceChar": 25,
+
+  "enemiesData": [
+    {
+      "position": 1,
+      "level":8
+    },
+    {
+      "position": 2,
+      "level":2
+    },
+    {
+      "position": 3,
+      "level":2
+    }
+]
+}

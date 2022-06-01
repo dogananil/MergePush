@@ -6,13 +6,17 @@
   "priceChar": 10,
 
   "enemiesData": [
-  {
+    {
       "position": 1,
-      "level":2
+      "level":1
     },
     {
-      "position": 3,
-      "level":4
+      "position": 4,
+      "level":1
+    },
+    {
+      "position": 5,
+      "level":1
     }
 ]
 }

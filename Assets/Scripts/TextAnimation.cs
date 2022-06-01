@@ -22,8 +22,4 @@ public class TextAnimation : MonoBehaviour
 
         this.gameObject.SetActive(false);
     }
-    private void Start()
-    {
-       StartCoroutine(ScaleAnimation());
-    }
 }
