@@ -3,7 +3,62 @@ guid: 6ebe2e7229e3a1949846c7567ae86df0
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dock
+    second: {fileID: 2100000, guid: 41e24025250bb424b93b24a6c677ed3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dock2
+    second: {fileID: 2100000, guid: 246f9ddf7e0ca6441a2a8625966d1f64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: ef3324d3fe05d2948b48c24f15df9109, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rock
+    second: {fileID: 2100000, guid: aeb288c4ff7d697488b9b298b43d1605, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sand
+    second: {fileID: 2100000, guid: 0c8f990481bf3b148896f7cc9f13dcb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sea
+    second: {fileID: 2100000, guid: cc21e5d6d9368bc49857040f4fd76fc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sunbed
+    second: {fileID: 2100000, guid: 04781eac3013b1540a2da91e0917f034, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: text
+    second: {fileID: 2100000, guid: 424b21895099ff64d98b504944bf2da8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: umbrella
+    second: {fileID: 2100000, guid: df3d98b3645b07e43a1059617d8ec09d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall
+    second: {fileID: 2100000, guid: 372b53f6bb7585b428c806b2d3eabde0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall2
+    second: {fileID: 2100000, guid: 8bd1ce5adc219c2468251dec5b5e4817, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

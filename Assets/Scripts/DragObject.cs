@@ -43,7 +43,6 @@ public class DragObject : MonoBehaviour
 
     private void OnMouseUp()
     {
-        Debug.Log(GameManager.isGameStart);
         if (GameManager.isGameStart == false)
         {
             if (!transform.GetComponent<CapsuleCollider>().enabled)
@@ -62,8 +61,8 @@ public class DragObject : MonoBehaviour
                     otherCharacterCollider.transform.localPosition -= Vector3.up * 0.2f;
                     Transform tempParticleDust = otherCharacterCollider.transform.GetComponent<Character>().particleDust.transform;
 
-                    otherCharacterCollider.transform.GetComponent<Character>().particleDust.transform.localScale += new Vector3(tempParticleDust.localScale.x/5,
-                        tempParticleDust.localScale.y/5, tempParticleDust.localScale.z/5);
+                    otherCharacterCollider.transform.GetComponent<Character>().particleDust.transform.localScale += new Vector3(tempParticleDust.localScale.x / 5,
+                        tempParticleDust.localScale.y / 5, tempParticleDust.localScale.z / 5);
                 }
 
                 textMesh.text = (textValue * 2).ToString();
@@ -75,10 +74,13 @@ public class DragObject : MonoBehaviour
 
                 var tempCharacter = otherCharacterCollider.transform.GetComponent<Character>();
                 tempCharacter.SetLevelupParticle(true);
-                tempCharacter.outfits[textValue * 2 / 2-1].SetActive(true);
+
+                if (textValue * 2 / 2 - 1 <= 5)
+                    tempCharacter.outfits[textValue * 2 / 2 - 1].SetActive(true);
 
 
-                    PushMovement.SetSpeed();
+
+                PushMovement.SetSpeed();
                 otherCharacterCollider.tag = characterTag;
                 otherCharacterCollider = null;
                 transform.tag = characterTag;
@@ -123,6 +125,8 @@ public class DragObject : MonoBehaviour
     {
         if (transform.tag == draggingObjectTag && other.tag == characterTag)
         {
+            Debug.Log("Drag Objenin characterLevel: " + character.level);
+            Debug.Log("Other Objenin characterLevel: " + other.GetComponent<DragObject>().character.level);
             if (character.level == other.GetComponent<DragObject>().character.level)
             {
                 isMergeTriggered = true;
@@ -142,6 +146,4 @@ public class DragObject : MonoBehaviour
             otherCharacterCollider = null;
         }
     }
-
-
 }
