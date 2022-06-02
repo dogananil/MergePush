@@ -72,7 +72,9 @@ public class ButtonHandler : MonoBehaviour
     public void btn_NextLevelClick()
     {
         PoolManager.instance.ResetPool();
+        UiManager.instance.powerUpImage.fillAmount = 0;
         GameManager.levelNumber++;
+        PlayerPrefs.SetInt("LevelNumber", GameManager.levelNumber);
         if(GameManager.levelNumber>GameManager.totalLevelCount)
         {
             GameManager.levelNumber = Random.Range(5, GameManager.totalLevelCount);
@@ -91,6 +93,7 @@ public class ButtonHandler : MonoBehaviour
     public void btn_RestartLevelClick()
     {
         PoolManager.instance.ResetPool();
+        UiManager.instance.powerUpImage.fillAmount = 0;
 
         GameManager.ResetDefaults();
         GameManager.totalGold += GameManager.loseGold;

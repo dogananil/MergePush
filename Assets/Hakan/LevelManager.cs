@@ -82,7 +82,7 @@ public class LevelManager : MonoBehaviour
     public void SetTextValues()
     {
 
-        UiManager.instance.levelText.text = "Level " + GameManager.levelNumber.ToString();
+        UiManager.instance.levelText.text = "Level " + (GameManager.levelNumber + 1).ToString();
         UiManager.instance.goldText.text = GameManager.totalGold.ToString();
         UiManager.instance.winGoldText.text = GameManager.winGold.ToString();
         UiManager.instance.loseGoldText.text = GameManager.loseGold.ToString();

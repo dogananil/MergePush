@@ -38,7 +38,6 @@ public class DragObject : MonoBehaviour
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
             mOffset = gameObject.transform.position - GetMouseWorldPos();
         }
-
     }
 
     private void OnMouseUp()
@@ -103,7 +102,7 @@ public class DragObject : MonoBehaviour
         if (GameManager.isGameStart == false)
         {
             transform.position = GetMouseWorldPos() + mOffset;
-
+            transform.position = new Vector3(transform.position.x, transform.position.y, 5.5f);
             if (transform.tag == characterTag)
                 transform.tag = draggingObjectTag;
         }
