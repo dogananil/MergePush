@@ -11,6 +11,7 @@ public class ButtonHandler : MonoBehaviour
     public void btn_StartClick()
     {
         GameManager.isGameStart = true;
+        GameManager.SavePref_TeamLayout();
         UiManager.instance.powerUpImage.fillAmount = 0;
         UiManager.instance.StartPanel.SetActive(false);
         UiManager.instance.gameScreenPanel.SetActive(true);
@@ -72,9 +73,14 @@ public class ButtonHandler : MonoBehaviour
     public void btn_NextLevelClick()
     {
         PoolManager.instance.ResetPool();
+        UiManager.instance.fx_WinConfetti.SetActive(false);
         UiManager.instance.powerUpImage.fillAmount = 0;
+
+        GameManager.SavePref_TeamLayout();
+
         GameManager.levelNumber++;
         PlayerPrefs.SetInt("LevelNumber", GameManager.levelNumber);
+
         if(GameManager.levelNumber>GameManager.totalLevelCount)
         {
             GameManager.levelNumber = Random.Range(5, GameManager.totalLevelCount);
@@ -94,7 +100,7 @@ public class ButtonHandler : MonoBehaviour
     {
         PoolManager.instance.ResetPool();
         UiManager.instance.powerUpImage.fillAmount = 0;
-
+        GameManager.SavePref_TeamLayout();
         GameManager.ResetDefaults();
         GameManager.totalGold += GameManager.loseGold;
         PlayerPrefs.SetInt("Gold", GameManager.totalGold);

@@ -8,6 +8,8 @@ public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
 
+    public GameObject fx_WinConfetti;
+
     public GameObject StartPanel;
     public GameObject gameScreenPanel;
     public GameObject winScreenPanel;

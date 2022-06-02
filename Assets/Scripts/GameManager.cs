@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         PoolManager.instance.CreatePool();
         LoadPrefs();
         LevelManager.instance.LoadLevels();
@@ -50,7 +51,27 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("LevelNumber", levelNumber);
 
         List<string> tempList = new List<string>();
-        foreach(var element in teamLayout)
+        foreach (var element in teamLayout)
+        {
+            tempList.Add(element.ToString());
+            tempList.Add("-");
+        }
+        tempList.RemoveAt(tempList.Count - 1);
+        string tempTeamLayout = "";
+
+        foreach (var element in tempList)
+        {
+            tempTeamLayout += element;
+        }
+
+        PlayerPrefs.SetString("TeamLayout", tempTeamLayout);
+        PlayerPrefs.Save();
+    }
+
+    public static void SavePref_TeamLayout()
+    {
+        List<string> tempList = new List<string>();
+        foreach (var element in teamLayout)
         {
             tempList.Add(element.ToString());
             tempList.Add("-");

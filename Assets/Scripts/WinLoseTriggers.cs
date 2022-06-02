@@ -25,6 +25,7 @@ public class WinLoseTriggers : MonoBehaviour
             }
             UiManager.instance.gameScreenPanel.SetActive(false);
             UiManager.instance.winScreenPanel.SetActive(true);
+            UiManager.instance.fx_WinConfetti.SetActive(true);
         }
         if(this.tag=="LoseTrigger")
         {
