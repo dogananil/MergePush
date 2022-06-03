@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.175454, g: 0.21953043, b: 0.30184987, a: 1}
+  m_IndirectSpecularColor: {r: 0.44021133, g: 0.48874784, b: 0.5689294, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5269,7 +5269,7 @@ PrefabInstance:
     - target: {fileID: 1092864281248756130, guid: 6a52842952054a445a38183531da9550,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1092864281248756130, guid: 6a52842952054a445a38183531da9550,
         type: 3}
@@ -5694,7 +5694,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7bc27a5f29ef4944dad157d9f1982437,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7bc27a5f29ef4944dad157d9f1982437,
         type: 3}
@@ -6648,8 +6648,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.3
+  m_Color: {r: 1, g: 0.98440355, b: 0.759434, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6659,8 +6659,8 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.4
-    m_Bias: 0.05
-    m_NormalBias: 0.4
+    m_Bias: 1.764
+    m_NormalBias: 1.767
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
       e00: 1
@@ -8053,7 +8053,7 @@ Transform:
   m_Children:
   - {fileID: 38810677}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1304836903
 GameObject:
@@ -11483,7 +11483,7 @@ PrefabInstance:
     - target: {fileID: 5896603719976645234, guid: edd16cb89c3bb4d4db034ea9219574ff,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5896603719976645234, guid: edd16cb89c3bb4d4db034ea9219574ff,
         type: 3}
