@@ -32,7 +32,7 @@ public class Character : MonoBehaviour
     public void SetCrackParticle(bool setActiveValue)
     {
         particleCrackLocation.SetActive(setActiveValue);
-        if(setActiveValue==true)
+        if (setActiveValue == true)
         {
             StartCoroutine(particleCrackLocation.GetComponent<CrackScript>().CreateCrackFx());
         }
@@ -46,5 +46,21 @@ public class Character : MonoBehaviour
         particleSpawn.SetActive(setActiveValue);
     }
 
-    
+    public void ResetCharacter()
+    {
+        foreach (var outfit in outfits)
+        {
+            outfit.SetActive(false);
+        }
+        transform.localScale = Vector3.one;
+        level = 1;
+        TextMeshPro.text = level.ToString();
+
+        particleSpawn.SetActive(true);
+        particleDust.SetActive(false);
+        particleLevelUp.SetActive(false);
+        ChangeAnimation(isGameStart:false);
+
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+    }
 }

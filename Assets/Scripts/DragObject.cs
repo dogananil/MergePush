@@ -52,7 +52,7 @@ public class DragObject : MonoBehaviour
                 TextMeshPro textMesh = otherCharacterCollider.transform.GetComponent<DragObject>().text;
                 int textValue = int.Parse(textMesh.text);
 
-                if (textValue * 2 == 4 || textValue * 2 == 16)
+                if (textValue * 2 == 2 || textValue * 2 == 8)
                 {
                     otherCharacterCollider.transform.localScale = new Vector3((float)(transform.localScale.x + 0.2), (float)(transform.localScale.y + 0.2),
                       (float)(transform.localScale.z + 0.2));
@@ -75,23 +75,24 @@ public class DragObject : MonoBehaviour
                 tempCharacter.SetLevelupParticle(true);
 
 
-                
-                if (Math.Log(textValue, 2) <= 5)
+
+                if (Math.Log(textValue * 2, 2) <= 6)
                 {
-                    for (int i = 0; i<=Math.Log(textValue, 2); i++)
+                    for (int i = 0; i < Math.Log(textValue * 2, 2); i++)
                     {
                         tempCharacter.outfits[i].SetActive(true);
                     }
-
                 }
 
 
 
                 PushMovement.SetSpeed();
+                transform.gameObject.SetActive(false);
                 otherCharacterCollider.tag = characterTag;
                 transform.tag = characterTag;
                 transform.SetParent(null);
-                transform.gameObject.SetActive(false);
+                transform.GetComponent<Character>().ResetCharacter();
+                PoolManager.instance.characters.Add(transform.GetComponent<Character>());
 
 
             }
@@ -123,13 +124,10 @@ public class DragObject : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (transform.tag == draggingObjectTag && other.tag == characterTag)
         {
-            Debug.Log("Drag Objenin characterLevel: " + character.level);
-            Debug.Log("Other Objenin characterLevel: " + other.GetComponent<DragObject>().character.level);
-            
             if (character.level == other.GetComponent<DragObject>().character.level)
             {
                 isMergeTriggered = true;
@@ -139,7 +137,6 @@ public class DragObject : MonoBehaviour
             {
                 isMergeTriggered = false;
             }
-            Debug.Log("isMergeTriggered: "+isMergeTriggered);
         }
 
         else if (transform.tag == characterTag && other.tag == "LoseTrigger")
@@ -149,4 +146,14 @@ public class DragObject : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (transform.tag == draggingObjectTag && other.tag == characterTag)
+        {
+            if (character.level == other.GetComponent<DragObject>().character.level)
+            {
+                isMergeTriggered = false;
+            }
+        }
+    }
 }

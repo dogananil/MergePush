@@ -13,6 +13,7 @@ public class ButtonHandler : MonoBehaviour
         GameManager.isGameStart = true;
         GameManager.SavePref_TeamLayout();
         UiManager.instance.powerUpImage.fillAmount = 0;
+        GameManager.tapPower = 0;
         UiManager.instance.StartPanel.SetActive(false);
         UiManager.instance.gameScreenPanel.SetActive(true);
         PushMovement.SetSpeed();
@@ -40,6 +41,7 @@ public class ButtonHandler : MonoBehaviour
                 {
                     GameManager.currentTeam.Add(PoolManager.instance.characters[PoolManager.instance.characters.Count - 1]);
                     PoolManager.instance.characters.RemoveAt(PoolManager.instance.characters.Count - 1);
+                    GameManager.currentTeam[GameManager.currentTeam.Count - 1].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                     GameManager.currentTeam[GameManager.currentTeam.Count - 1].transform.SetParent(characterPosition);
                     GameManager.currentTeam[GameManager.currentTeam.Count - 1].transform.localPosition = new Vector3(0, 0, 0);
 
@@ -78,6 +80,7 @@ public class ButtonHandler : MonoBehaviour
         PoolManager.instance.ResetPool();
         UiManager.instance.fx_WinConfetti.SetActive(false);
         UiManager.instance.powerUpImage.fillAmount = 0;
+        GameManager.tapPower = 0;
 
         GameManager.SavePref_TeamLayout();
 
@@ -103,6 +106,7 @@ public class ButtonHandler : MonoBehaviour
     {
         PoolManager.instance.ResetPool();
         UiManager.instance.powerUpImage.fillAmount = 0;
+        GameManager.tapPower = 0;
         GameManager.SavePref_TeamLayout();
         GameManager.ResetDefaults();
         GameManager.totalGold += GameManager.loseGold;

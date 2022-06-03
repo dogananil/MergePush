@@ -19,8 +19,13 @@ public class PushMovement : MonoBehaviour
 
     public static void SetSpeed()
     {
-        GameManager.speed = ((float)GameManager.ourPower - (float)GameManager.enemyPower + (float)GameManager.tapPower) /4;
+        Debug.Log("enemyPower: " + GameManager.enemyPower);
+        Debug.Log("ourPower: " + GameManager.ourPower);
+
+        GameManager.speed = ((float)GameManager.ourPower - (float)GameManager.enemyPower + (float)GameManager.tapPower) /2;
         GameManager.speed = Mathf.Clamp(GameManager.speed, -1, 1);
+        Debug.Log("speed: " + GameManager.speed);
+
     }
 
 }

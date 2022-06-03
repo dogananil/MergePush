@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        /*PlayerPrefs.SetInt("Gold", 100);
+        PlayerPrefs.SetInt("Gold", 800);
         PlayerPrefs.SetString("TeamLayout", "0-0-1-0-0");
-        PlayerPrefs.SetInt("LevelNumber", 0);
-        PlayerPrefs.Save();*/
+        PlayerPrefs.SetInt("LevelNumber", 8);
+        PlayerPrefs.Save();
 
 
         PoolManager.instance.CreatePool();

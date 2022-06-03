@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -42,22 +43,53 @@ public class LevelManager : MonoBehaviour
         {
             if (GameManager.teamLayout[i] != 0)
             {
-                //GameManager.currentTeam.Add(PoolManager.instance.characters[PoolManager.instance.characters.Count - 1]);
-                var tempPoolCharacter = PoolManager.instance.characters.Find(x => x.level == GameManager.teamLayout[i]);
-                GameManager.currentTeam.Add(tempPoolCharacter);
+                GameManager.currentTeam.Add(PoolManager.instance.characters[PoolManager.instance.characters.Count - 1]);
+                //var tempPoolCharacter = PoolManager.instance.characters.Find(x => x.level == GameManager.teamLayout[i]);
+                //GameManager.currentTeam.Add(tempPoolCharacter);
 
                 Character tempCharacter = GameManager.currentTeam[GameManager.currentTeam.Count - 1];
                 tempCharacter.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
-                //PoolManager.instance.characters.RemoveAt(PoolManager.instance.characters.Count - 1);
-                PoolManager.instance.characters.Remove(tempPoolCharacter);
+                PoolManager.instance.characters.RemoveAt(PoolManager.instance.characters.Count - 1);
+                //PoolManager.instance.characters.Remove(tempPoolCharacter);
                 tempCharacter.transform.SetParent(characterPositions[i]);
                 tempCharacter.transform.localPosition = new Vector3(0, 0, 0);
                 tempCharacter.transform.gameObject.SetActive(true);
 
                 tempCharacter.level = GameManager.teamLayout[i];
                 tempCharacter.TextMeshPro.text = tempCharacter.level.ToString();
-                GameManager.ourPower += GameManager.teamLayout[i];
+
+                if (Math.Log(tempCharacter.level, 2) <= 6 && tempCharacter.level != 1)
+                {
+                    for (int j = 0; j < Math.Log(tempCharacter.level, 2); j++)
+                    {
+                        tempCharacter.outfits[j].SetActive(true);
+                    }
+                }
+                if (tempCharacter.level == 2 || tempCharacter.level == 4)
+                {
+                    tempCharacter.transform.localScale = new Vector3((float)(transform.localScale.x + 0.2), (float)(transform.localScale.y + 0.2),
+                      (float)(transform.localScale.z + 0.2));
+
+                    tempCharacter.transform.localPosition -= Vector3.up * 0.2f;
+                    Transform tempParticleDust = tempCharacter.transform.GetComponent<Character>().particleDust.transform;
+
+                    tempCharacter.transform.GetComponent<Character>().particleDust.transform.localScale += new Vector3(tempParticleDust.localScale.x / 5,
+                        tempParticleDust.localScale.y / 5, tempParticleDust.localScale.z / 5);
+                }
+                if (tempCharacter.level >= 8)
+                {
+                    tempCharacter.transform.localScale = new Vector3((float)(transform.localScale.x + 0.2 * 2), (float)(transform.localScale.y + 0.2 * 2),
+                     (float)(transform.localScale.z + 0.2 * 2));
+
+                    tempCharacter.transform.localPosition -= Vector3.up * 0.2f;
+                    Transform tempParticleDust = tempCharacter.transform.GetComponent<Character>().particleDust.transform;
+
+                    tempCharacter.transform.GetComponent<Character>().particleDust.transform.localScale += new Vector3(tempParticleDust.localScale.x * 0.5f * 2,
+                        tempParticleDust.localScale.y * 0.5f * 2, tempParticleDust.localScale.z * 0.5f * 2);
+
+                }
+                GameManager.ourPower += GameManager.teamLayout[i]*2-1;
             }
         }
         foreach (var enemyData in levelDatas[GameManager.levelNumber].enemiesData)
@@ -72,7 +104,7 @@ public class LevelManager : MonoBehaviour
             GameManager.enemyTeam[GameManager.enemyTeam.Count - 1].GetComponentInChildren<TextMeshPro>().text = enemyData.level.ToString();
             GameManager.enemyTeam[GameManager.enemyTeam.Count - 1].transform.gameObject.SetActive(true);
 
-            GameManager.enemyPower += enemyData.level;
+            GameManager.enemyPower += enemyData.level*2-1;
             GameManager.enemyLayout[enemyData.position - 1] = enemyData.level;
         }
         PushMovement.SetSpeed();

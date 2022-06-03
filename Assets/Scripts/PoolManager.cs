@@ -19,7 +19,7 @@ public class PoolManager : MonoBehaviour
     }
     public void CreatePool()
     {        
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
             Character tempCharacter = Instantiate(characterPose, this.transform);
             tempCharacter.gameObject.SetActive(false);
@@ -41,6 +41,7 @@ public class PoolManager : MonoBehaviour
                 Transform tempCharacter = characterPosition.GetChild(0);
                 tempCharacter.gameObject.SetActive(false);
                 tempCharacter.transform.SetParent(null);
+                tempCharacter.GetComponent<Character>().ResetCharacter();
                 characters.Add(tempCharacter.GetComponent<Character>());
             }
             GameManager.currentTeam.Clear();
@@ -59,3 +60,5 @@ public class PoolManager : MonoBehaviour
     }
 
 }
+
+
