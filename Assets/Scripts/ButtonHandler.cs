@@ -21,6 +21,8 @@ public class ButtonHandler : MonoBehaviour
         {
             character.ChangeAnimation(isGameStart: true);
             character.SetDustParticle(true);
+            if (character.gameObject.activeSelf)
+                character.SetCrackParticle(true);
         }
         foreach (var enemy in GameManager.enemyTeam)
         {
@@ -30,7 +32,7 @@ public class ButtonHandler : MonoBehaviour
     }
     public void btn_BuyUnitClick()
     {
-        if(GameManager.totalGold>=GameManager.priceChar)
+        if (GameManager.totalGold >= GameManager.priceChar)
         {
             foreach (var characterPosition in LevelManager.instance.characterPositions)
             {
@@ -42,6 +44,7 @@ public class ButtonHandler : MonoBehaviour
                     GameManager.currentTeam[GameManager.currentTeam.Count - 1].transform.localPosition = new Vector3(0, 0, 0);
 
                     GameManager.currentTeam[GameManager.currentTeam.Count - 1].transform.gameObject.SetActive(true);
+                    GameManager.currentTeam[GameManager.currentTeam.Count - 1].SetSpawnParticle(true);
 
                     GameManager.teamLayout[teamLayoutIndex] = 1;
                     GameManager.ourPower++;
@@ -66,8 +69,8 @@ public class ButtonHandler : MonoBehaviour
             unitCounter = 0;
             teamLayoutIndex = 0;
         }
-        
-        
+
+
     }
 
     public void btn_NextLevelClick()
@@ -81,7 +84,7 @@ public class ButtonHandler : MonoBehaviour
         GameManager.levelNumber++;
         PlayerPrefs.SetInt("LevelNumber", GameManager.levelNumber);
 
-        if(GameManager.levelNumber>GameManager.totalLevelCount)
+        if (GameManager.levelNumber > GameManager.totalLevelCount)
         {
             GameManager.levelNumber = Random.Range(5, GameManager.totalLevelCount);
         }
@@ -111,7 +114,7 @@ public class ButtonHandler : MonoBehaviour
         LevelManager.instance.CreateLevel();
 
         UiManager.instance.StartPanel.SetActive(true);
-        
+
     }
 
 

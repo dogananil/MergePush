@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - LoseTrigger
+  - WinTrigger
+  - Character
+  - Enemy
+  - DraggingCharacter
+  - PushObject
   layers:
   - Default
   - TransparentFX
@@ -12,8 +18,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - PushObjectLayer
+  - TriggerLayer
   - Lighting
   - Ground
   - Postprocessing

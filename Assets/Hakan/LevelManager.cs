@@ -42,15 +42,21 @@ public class LevelManager : MonoBehaviour
         {
             if (GameManager.teamLayout[i] != 0)
             {
-                GameManager.currentTeam.Add(PoolManager.instance.characters[PoolManager.instance.characters.Count - 1]);
+                //GameManager.currentTeam.Add(PoolManager.instance.characters[PoolManager.instance.characters.Count - 1]);
+                var tempPoolCharacter = PoolManager.instance.characters.Find(x => x.level == GameManager.teamLayout[i]);
+                GameManager.currentTeam.Add(tempPoolCharacter);
 
-                GameManager.currentTeam[GameManager.currentTeam.Count - 1].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                Character tempCharacter = GameManager.currentTeam[GameManager.currentTeam.Count - 1];
+                tempCharacter.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
-                PoolManager.instance.characters.RemoveAt(PoolManager.instance.characters.Count - 1);
-                GameManager.currentTeam[GameManager.currentTeam.Count - 1].transform.SetParent(characterPositions[i]);
-                GameManager.currentTeam[GameManager.currentTeam.Count - 1].transform.localPosition = new Vector3(0, 0, 0);
-                GameManager.currentTeam[GameManager.currentTeam.Count - 1].transform.gameObject.SetActive(true);
+                //PoolManager.instance.characters.RemoveAt(PoolManager.instance.characters.Count - 1);
+                PoolManager.instance.characters.Remove(tempPoolCharacter);
+                tempCharacter.transform.SetParent(characterPositions[i]);
+                tempCharacter.transform.localPosition = new Vector3(0, 0, 0);
+                tempCharacter.transform.gameObject.SetActive(true);
 
+                tempCharacter.level = GameManager.teamLayout[i];
+                tempCharacter.TextMeshPro.text = tempCharacter.level.ToString();
                 GameManager.ourPower += GameManager.teamLayout[i];
             }
         }

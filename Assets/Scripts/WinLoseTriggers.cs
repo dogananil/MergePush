@@ -7,7 +7,7 @@ public class WinLoseTriggers : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (this.tag == "WinTrigger")
+        if (this.tag == "WinTrigger" && other.tag == "PushObject")
         {
             foreach (var character in GameManager.currentTeam)
             {
@@ -26,8 +26,9 @@ public class WinLoseTriggers : MonoBehaviour
             UiManager.instance.gameScreenPanel.SetActive(false);
             UiManager.instance.winScreenPanel.SetActive(true);
             UiManager.instance.fx_WinConfetti.SetActive(true);
+            GameManager.isGameEnd = true;
         }
-        if(this.tag=="LoseTrigger")
+        if (this.tag=="LoseTrigger" && other.tag=="PushObject")
         {
             foreach (var character in GameManager.currentTeam)
             {
@@ -45,8 +46,8 @@ public class WinLoseTriggers : MonoBehaviour
             }
             UiManager.instance.gameScreenPanel.SetActive(false);
             UiManager.instance.loseScreenPanel.SetActive(true);
+            GameManager.isGameEnd = true;
         }
-        GameManager.isGameEnd = true;
 
     }
 }

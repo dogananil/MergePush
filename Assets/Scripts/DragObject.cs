@@ -74,14 +74,21 @@ public class DragObject : MonoBehaviour
                 var tempCharacter = otherCharacterCollider.transform.GetComponent<Character>();
                 tempCharacter.SetLevelupParticle(true);
 
-                if (textValue * 2 / 2 - 1 <= 5)
-                    tempCharacter.outfits[textValue * 2 / 2 - 1].SetActive(true);
+
+                
+                if (Math.Log(textValue, 2) <= 5)
+                {
+                    for (int i = 0; i<=Math.Log(textValue, 2); i++)
+                    {
+                        tempCharacter.outfits[i].SetActive(true);
+                    }
+
+                }
 
 
 
                 PushMovement.SetSpeed();
                 otherCharacterCollider.tag = characterTag;
-                otherCharacterCollider = null;
                 transform.tag = characterTag;
                 transform.SetParent(null);
                 transform.gameObject.SetActive(false);
@@ -106,10 +113,6 @@ public class DragObject : MonoBehaviour
             if (transform.tag == characterTag)
                 transform.tag = draggingObjectTag;
         }
-
-
-        /*if (transform.GetComponent<CapsuleCollider>().enabled)
-            transform.GetComponent<CapsuleCollider>().enabled = false;*/
     }
 
     private Vector3 GetMouseWorldPos()
@@ -126,6 +129,7 @@ public class DragObject : MonoBehaviour
         {
             Debug.Log("Drag Objenin characterLevel: " + character.level);
             Debug.Log("Other Objenin characterLevel: " + other.GetComponent<DragObject>().character.level);
+            
             if (character.level == other.GetComponent<DragObject>().character.level)
             {
                 isMergeTriggered = true;
@@ -135,14 +139,14 @@ public class DragObject : MonoBehaviour
             {
                 isMergeTriggered = false;
             }
+            Debug.Log("isMergeTriggered: "+isMergeTriggered);
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (transform.tag == draggingObjectTag && other.tag == characterTag)
+
+        else if (transform.tag == characterTag && other.tag == "LoseTrigger")
         {
-            isMergeTriggered = false;
-            otherCharacterCollider = null;
+            transform.GetComponent<Character>().SetDustParticle(false);
+            transform.GetComponent<Character>().SetCrackParticle(false);
         }
     }
+
 }
