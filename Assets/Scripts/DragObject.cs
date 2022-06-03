@@ -60,8 +60,7 @@ public class DragObject : MonoBehaviour
                     otherCharacterCollider.transform.localPosition -= Vector3.up * 0.2f;
                     Transform tempParticleDust = otherCharacterCollider.transform.GetComponent<Character>().particleDust.transform;
 
-                    otherCharacterCollider.transform.GetComponent<Character>().particleDust.transform.localScale += new Vector3(tempParticleDust.localScale.x / 5,
-                        tempParticleDust.localScale.y / 5, tempParticleDust.localScale.z / 5);
+                    otherCharacterCollider.transform.GetComponent<Character>().particleDust.transform.localScale = (textValue * 2)==2?Vector3.one * 0.035f *1.5f: Vector3.one * 0.035f * 2.0f ;//new Vector3(tempParticleDust.localScale.x / 5,tempParticleDust.localScale.y / 5, tempParticleDust.localScale.z / 5);
                 }
 
                 textMesh.text = (textValue * 2).ToString();

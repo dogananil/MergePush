@@ -7,6 +7,7 @@ public class TextScript : MonoBehaviour
     
     private void Start()
     {
-        transform.rotation=Camera.main.transform.rotation;
+        //transform.LookAt(Camera.main.transform);
+        //transform.RotateAroundLocal(transform.up, angle: 210f);
     }
 }
