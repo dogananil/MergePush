@@ -12,7 +12,7 @@ public class TapToPush : MonoBehaviour
 
     public int power = 0;
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         if (GameManager.isGameStart == true && GameManager.isGameEnd == false)
         {
@@ -42,6 +42,33 @@ public class TapToPush : MonoBehaviour
         {
             GameManager.tapPower = 0;
             PushMovement.SetSpeed();
+        }
+    }*/
+    private void Update()
+    {
+        if (GameManager.isGameStart == true && GameManager.isGameEnd == false)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                UiManager.instance.powerUpImage.fillAmount += Mathf.Clamp(0.10f, 0, 1);
+
+            }
+            UiManager.instance.powerUpImage.fillAmount -= Time.deltaTime/3f;
+
+            if (UiManager.instance.powerUpImage.fillAmount <= 0)
+            {
+                UiManager.instance.powerUpImage.fillAmount = 0;
+            }
+            if (UiManager.instance.powerUpImage.fillAmount > 0)
+            {
+                GameManager.tapPower = 1;
+                PushMovement.SetSpeed();
+            }
+            else
+            {
+                GameManager.tapPower = 0;
+                PushMovement.SetSpeed();
+            }
         }
     }
 }
