@@ -91,6 +91,8 @@ public class DragObject : MonoBehaviour
                 transform.tag = characterTag;
                 transform.SetParent(null);
                 transform.GetComponent<Character>().ResetCharacter();
+                GameManager.currentTeam.Remove(transform.GetComponent<Character>());
+                UiManager.instance.unitBuyGoldText.text = GameManager.priceChar.ToString();
                 PoolManager.instance.characters.Add(transform.GetComponent<Character>());
 
 

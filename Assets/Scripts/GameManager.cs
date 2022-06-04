@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Facebook.Unity;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,11 +29,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-       /* PlayerPrefs.SetInt("Gold", 0);
-        PlayerPrefs.SetString("TeamLayout", "0-0-1-0-0");
-        PlayerPrefs.SetInt("LevelNumber", 0);
-        PlayerPrefs.Save();*/
-
+        /* PlayerPrefs.SetInt("Gold", 0);
+         PlayerPrefs.SetString("TeamLayout", "0-0-1-0-0");
+         PlayerPrefs.SetInt("LevelNumber", 0);
+         PlayerPrefs.Save();*/
+        FB.Init("570308681379162");
 
         PoolManager.instance.CreatePool();
         LoadPrefs();
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
     }
     private void LoadPrefs()
     {
-        totalGold = PlayerPrefs.GetInt("Gold", 0);
+        totalGold = PlayerPrefs.GetInt("Gold", 1000);
         var tempList = PlayerPrefs.GetString("TeamLayout", "0-0-1-0-0").Split('-');
         levelNumber = PlayerPrefs.GetInt("LevelNumber", 0);
         foreach (var element in tempList)
