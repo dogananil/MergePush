@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FGAdjustSettings
   m_EditorClassIdentifier: 
   version: 1.0
-  AppToken: 
+  AppToken: qdp0m5xb8ge8
   logLevel: 3
-  environment: 0
+  environment: 1
