@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     }
     private void LoadPrefs()
     {
-        totalGold = PlayerPrefs.GetInt("Gold", 1000);
+        totalGold = PlayerPrefs.GetInt("Gold", 100);
         var tempList = PlayerPrefs.GetString("TeamLayout", "0-0-1-0-0").Split('-');
         levelNumber = PlayerPrefs.GetInt("LevelNumber", 0);
         foreach (var element in tempList)

@@ -107,7 +107,7 @@ public class ButtonHandler : MonoBehaviour
                 GameManager.currentTeam[lowestLevelIndex].TextMeshPro.text = (lowestLevel * 2).ToString();
                 GameManager.ourPower += (lowestLevel * 2 * 2 - 1) - (lowestLevel * 2 - 1) * 2;
                 GameManager.teamLayout[LevelManager.instance.characterPositions.IndexOf(GameManager.currentTeam[lowestLevelIndex].transform.parent)] = lowestLevel * 2;
-                GameManager.currentTeam[lowestLevelIndex].SetLevelupParticle(true);
+                GameManager.currentTeam[lowestLevelIndex].SetLevelupParticle();
                 if (Math.Log(lowestLevel * 2, 2) <= 6)
                 {
                     for (int j = 0; j < Math.Log(lowestLevel * 2, 2); j++)

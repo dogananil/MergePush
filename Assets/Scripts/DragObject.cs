@@ -33,18 +33,20 @@ public class DragObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (GameManager.isGameStart == false)
-        {
+        
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
             mOffset = gameObject.transform.position - GetMouseWorldPos();
-        }
+        character.animator.SetBool("dragObject", true);
+        GameManager.ourPower -= character.level;
+        PushMovement.SetSpeed();
+
     }
 
     private void OnMouseUp()
     {
-        if (GameManager.isGameStart == false)
-        {
-            if (!transform.GetComponent<CapsuleCollider>().enabled)
+        GameManager.ourPower += character.level;
+        PushMovement.SetSpeed();
+        if (!transform.GetComponent<CapsuleCollider>().enabled)
                 transform.GetComponent<CapsuleCollider>().enabled = true;
 
             if (isMergeTriggered == true && otherCharacterCollider != null)
@@ -57,7 +59,7 @@ public class DragObject : MonoBehaviour
                     otherCharacterCollider.transform.localScale = new Vector3((float)(transform.localScale.x + 0.2), (float)(transform.localScale.y + 0.2),
                       (float)(transform.localScale.z + 0.2));
 
-                    otherCharacterCollider.transform.localPosition -= Vector3.up * 0.2f;
+                    otherCharacterCollider.transform.localPosition = otherCharacterCollider.GetComponent<Character>().level*Vector3.up * 0.05f;
                     Transform tempParticleDust = otherCharacterCollider.transform.GetComponent<Character>().particleDust.transform;
 
                     otherCharacterCollider.transform.GetComponent<Character>().particleDust.transform.localScale = (textValue * 2)==2?Vector3.one * 0.035f *1.5f: Vector3.one * 0.035f * 2.0f ;//new Vector3(tempParticleDust.localScale.x / 5,tempParticleDust.localScale.y / 5, tempParticleDust.localScale.z / 5);
@@ -71,7 +73,7 @@ public class DragObject : MonoBehaviour
                 GameManager.teamLayout[LevelManager.instance.characterPositions.IndexOf(this.transform.parent)] = 0;
 
                 var tempCharacter = otherCharacterCollider.transform.GetComponent<Character>();
-                tempCharacter.SetLevelupParticle(true);
+                tempCharacter.SetLevelupParticle();
 
 
 
@@ -85,7 +87,7 @@ public class DragObject : MonoBehaviour
 
 
 
-                PushMovement.SetSpeed();
+               
                 transform.gameObject.SetActive(false);
                 otherCharacterCollider.tag = characterTag;
                 transform.tag = characterTag;
@@ -94,29 +96,29 @@ public class DragObject : MonoBehaviour
                 GameManager.currentTeam.Remove(transform.GetComponent<Character>());
                 UiManager.instance.unitBuyGoldText.text = GameManager.priceChar.ToString();
                 PoolManager.instance.characters.Add(transform.GetComponent<Character>());
+                PushMovement.SetSpeed();
 
-
-            }
+        }
             else
             {
                 transform.localPosition = new Vector3(0, 0, 0);
                 transform.tag = characterTag;
             }
-        }
+        character.animator.SetBool("dragObject", false);
 
     }
 
     private void OnMouseDrag()
     {
-        if (GameManager.isGameStart == false)
-        {
+        
             transform.position = GetMouseWorldPos() + mOffset;
-            transform.position = new Vector3(transform.position.x, transform.position.y, 5.5f);
+        
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0f);
             if (transform.tag == characterTag)
                 transform.tag = draggingObjectTag;
-        }
+        
     }
-
+   
     private Vector3 GetMouseWorldPos()
     {
         Vector3 mousePoint = Input.mousePosition; //(x,y)

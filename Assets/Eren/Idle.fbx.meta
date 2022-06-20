@@ -69,18 +69,18 @@ ModelImporter:
       lastFrame: 76
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: -0.35
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -279,8 +279,8 @@ ModelImporter:
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -288,7 +288,35 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.25652173
+        functionName: LeftLegCrackParticle
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5608696
+        functionName: SwelteParticle
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.74300647
+        functionName: OnlyPushPose
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.82173914
+        functionName: RightLegCrackParticle
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -351,7 +379,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 0.03
@@ -683,7 +711,8 @@ ModelImporter:
     - name: mixamorig:Hips
       parentName: Armature.003
       position: {x: 0.000000006519258, y: 1.0369536, z: -0.04703812}
-      rotation: {x: 0.00000009191753, y: -0.000000033726295, z: -0.0000000018285046, w: 1}
+      rotation: {x: 0.00000009191753, y: -0.000000033726295, z: -0.0000000018285046,
+        w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Spine
       parentName: mixamorig:Hips
@@ -693,12 +722,14 @@ ModelImporter:
     - name: mixamorig:Spine1
       parentName: mixamorig:Spine
       position: {x: -0.000000018310546, y: 0.18976486, z: -0.000000059223172}
-      rotation: {x: -0.00000009313226, y: -0.000000047241908, z: 0.000000013324404, w: 1}
+      rotation: {x: -0.00000009313226, y: -0.000000047241908, z: 0.000000013324404,
+        w: 1}
       scale: {x: 1, y: 0.9999999, z: 1.0000001}
     - name: mixamorig:Spine2
       parentName: mixamorig:Spine1
       position: {x: -0.000000013732911, y: 0.21687374, z: -0.000000008583069}
-      rotation: {x: 0.00000004284084, y: -0.000000007025637, z: -0.000000015868455, w: 1}
+      rotation: {x: 0.00000004284084, y: -0.000000007025637, z: -0.000000015868455,
+        w: 1}
       scale: {x: 0.99999994, y: 1, z: 0.99999976}
     - name: mixamorig:Neck
       parentName: mixamorig:Spine2
@@ -708,7 +739,8 @@ ModelImporter:
     - name: mixamorig:Head
       parentName: mixamorig:Neck
       position: {x: 0.0000000068664554, y: 0.18502024, z: 0.0017227698}
-      rotation: {x: 0.000000016763806, y: 0.000000015522039, z: 0.000000011641534, w: 1}
+      rotation: {x: 0.000000016763806, y: 0.000000015522039, z: 0.000000011641534,
+        w: 1}
       scale: {x: 1.0000001, y: 1.0000002, z: 1}
     - name: mixamorig:HeadTop_End
       parentName: mixamorig:Head
@@ -858,7 +890,8 @@ ModelImporter:
     - name: mixamorig:LeftToe_End
       parentName: mixamorig:LeftToeBase
       position: {x: -0.00000001976341, y: 0.06164434, z: -8.4042545e-10}
-      rotation: {x: -0.000000029802312, y: -0.00000013038512, z: -0.00000016018743, w: 1}
+      rotation: {x: -0.000000029802312, y: -0.00000013038512, z: -0.00000016018743,
+        w: 1}
       scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: mixamorig:RightUpLeg
       parentName: mixamorig:Hips
@@ -883,7 +916,8 @@ ModelImporter:
     - name: mixamorig:RightToe_End
       parentName: mixamorig:RightToeBase
       position: {x: -0.00000003604889, y: 0.06411691, z: 0.0000000022888182}
-      rotation: {x: -0.000000059604623, y: 0.00000024959436, z: -0.000000026077023, w: 1}
+      rotation: {x: -0.000000059604623, y: 0.00000024959436, z: -0.000000026077023,
+        w: 1}
       scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: stickman.003
       parentName: Idle(Clone)

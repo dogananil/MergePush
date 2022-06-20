@@ -12,12 +12,27 @@ public class Enemy : MonoBehaviour
 
     public void ChangeAnimation(int die = -1, int dance = -1, bool isGameStart = false)
     {
-        animator.SetBool(nameof(isGameStart), isGameStart);
+        float random = Random.Range(0, 0.4f);
+        StartCoroutine(AnimationNoise(random, isGameStart));
         animator.SetInteger(nameof(dance), dance);
         animator.SetInteger(nameof(die), die);
+    }
+    private IEnumerator AnimationNoise(float seconds, bool isGameStart = false)
+    {
+        yield return new WaitForSeconds(seconds);
+        animator.SetBool(nameof(isGameStart), isGameStart);
     }
     public void SetDustParticle(bool setActiveValue)
     {
         particleDust.SetActive(setActiveValue);
+    }
+    private void Punch()
+    {
+        
+            
+            StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.25f));
+        
+
+
     }
 }
