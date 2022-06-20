@@ -10,6 +10,10 @@ public class Character : MonoBehaviour
     public Animator animator;
     public GameObject particleDust;
     public ParticleSystem particleLevelUp;
+    public ParticleSystem rightFootSmoke;
+    public ParticleSystem LeftFootSmoke;
+    public ParticleSystem rightFootCrack;
+    public ParticleSystem LeftFootCrack;
     public GameObject particleSpawn;
 
     public GameObject particleCrackLocation;
@@ -33,15 +37,15 @@ public class Character : MonoBehaviour
     }
     public void SetDustParticle(bool setActiveValue)
     {
-        particleDust.SetActive(setActiveValue);
+        //particleDust.SetActive(setActiveValue);
     }
     public void SetCrackParticle(bool setActiveValue)
     {
-        particleCrackLocation.SetActive(setActiveValue);
+       /* particleCrackLocation.SetActive(setActiveValue);
         if (setActiveValue == true)
         {
             StartCoroutine(particleCrackLocation.GetComponent<CrackScript>().CreateCrackFx());
-        }
+        }*/
     }
     public void SetLevelupParticle()
     {
@@ -63,7 +67,7 @@ public class Character : MonoBehaviour
         TextMeshPro.text = level.ToString();
 
         particleSpawn.SetActive(true);
-        particleDust.SetActive(false);
+        //particleDust.SetActive(false);
         particleLevelUp.Play();
         ChangeAnimation(isGameStart:false);
 
@@ -75,11 +79,61 @@ public class Character : MonoBehaviour
     }
     private void RightLegCrackParticle()
     {
-        //m_sweltParticle.Play();
+        if (!CameraShake.shaking && level >= 4)
+        {
+            switch (level)
+            {
+                case 4:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.05f));
+                    break;
+                case 8:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.15f));
+                    break;
+                case 16:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.20f));
+                    break;
+                case 32:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.25f));
+                    break;
+                default:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.30f));
+                    break;
+            }
+            CameraShake.shaking = true;
+
+        }
+        rightFootSmoke.Play();
+        rightFootCrack.Play();
+        // m_sweltParticle.Play();
     }
     private void LeftLegCrackParticle()
     {
-        m_sweltParticle.Play();
+        if (!CameraShake.shaking && level>=4)
+        {
+            switch(level)
+            {
+                case 4:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.05f));
+                    break;
+                case 8:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.15f));
+                    break;
+                case 16:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.20f));
+                    break;
+                case 32:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.25f));
+                    break;
+                default:
+                    StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.15f, 0.30f));
+                    break;
+            }
+            CameraShake.shaking = true;
+            
+        }
+        LeftFootSmoke.Play();
+        LeftFootCrack.Play();
+       // m_sweltParticle.Play();
     }
     private void OnlyPushPose()
     {

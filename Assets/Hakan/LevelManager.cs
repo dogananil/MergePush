@@ -72,9 +72,9 @@ public class LevelManager : MonoBehaviour
                       (float)(transform.localScale.z + 0.2));
 
                     tempCharacter.transform.localPosition = new Vector3(0, 0, 0) + tempCharacter.level * Vector3.up * 0.01f;
-                    Transform tempParticleDust = tempCharacter.transform.GetComponent<Character>().particleDust.transform;
+                   
 
-                    tempCharacter.transform.GetComponent<Character>().particleDust.transform.localScale = Vector3.one * 0.035f*1.5f; //new Vector3(tempParticleDust.localScale.x / 5,tempParticleDust.localScale.y / 5, tempParticleDust.localScale.z / 5);
+                     //new Vector3(tempParticleDust.localScale.x / 5,tempParticleDust.localScale.y / 5, tempParticleDust.localScale.z / 5);
                 }
                 if (tempCharacter.level >= 8)
                 {
@@ -82,9 +82,9 @@ public class LevelManager : MonoBehaviour
                      (float)(transform.localScale.z + 0.2 * 2));
 
                     tempCharacter.transform.localPosition = new Vector3(0, 0, 0) + tempCharacter.level * Vector3.up * 0.01f;
-                    Transform tempParticleDust = tempCharacter.transform.GetComponent<Character>().particleDust.transform;
+                   
 
-                    tempCharacter.transform.GetComponent<Character>().particleDust.transform.localScale = Vector3.one * 0.035f * 2f;// new Vector3(tempParticleDust.localScale.x * 0.5f * 2,tempParticleDust.localScale.y * 0.5f * 2, tempParticleDust.localScale.z * 0.5f * 2);
+                  // new Vector3(tempParticleDust.localScale.x * 0.5f * 2,tempParticleDust.localScale.y * 0.5f * 2, tempParticleDust.localScale.z * 0.5f * 2);
 
                 }
                 GameManager.ourPower += GameManager.teamLayout[i]*2-1;

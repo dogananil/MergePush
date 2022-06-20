@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     }
     public void SetDustParticle(bool setActiveValue)
     {
-        particleDust.SetActive(setActiveValue);
+       // particleDust.SetActive(setActiveValue);
     }
     private void Punch()
     {

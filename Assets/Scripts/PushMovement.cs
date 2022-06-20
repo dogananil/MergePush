@@ -22,10 +22,11 @@ public class PushMovement : MonoBehaviour
         
 
         GameManager.speed = ((float)GameManager.ourPower - (float)GameManager.enemyPower + (float)GameManager.tapPower) /2;
-        GameManager.speed = GameManager.speed / ((float)GameManager.ourPower + (float)GameManager.enemyPower);
+        GameManager.speed = (GameManager.ourPower-GameManager.enemyPower) / ((float)GameManager.ourPower + (float)GameManager.enemyPower);
         GameManager.speed = Mathf.Clamp(GameManager.speed, -1, 1);
-        
-
+        Debug.Log("Our Power = " + GameManager.ourPower);
+        Debug.Log("Enemy Power = " + GameManager.enemyPower);
+        Debug.Log("Game Speed = " + GameManager.speed);
         foreach(Character temp in GameManager.currentTeam)
         {
             
@@ -33,48 +34,48 @@ public class PushMovement : MonoBehaviour
             {
                 temp.animator.SetBool("canPush", true);
 
-                temp.animator.SetFloat("pushSpeed", -1 + GameManager.speed * 3f);
-            }
-            else if(GameManager.speed>0)
-            {
+                temp.animator.SetFloat("pushSpeed", -1 - GameManager.speed * 3f);
+            }                                                                
+            else if(GameManager.speed>0)                                     
+            {                                                                
+                                                                             
+                temp.animator.SetBool("canPush", true);                      
+                                                                             
+                temp.animator.SetFloat("pushSpeed", 1f + GameManager.speed * 3f);
+                                                                             
                
-                temp.animator.SetBool("canPush", true);
-
-                temp.animator.SetFloat("pushSpeed", 1 + GameManager.speed * 3f);
-
-                Debug.Log("Animatio n speed  =  " + temp.animator.speed);
-            }
-            else
-            {
-                temp.animator.SetBool("canPush", false);
-                temp.animator.SetFloat("pushSpeed", 1 + GameManager.speed * 3f);
-            }
-            
-        }
-        foreach (Enemy temp in GameManager.enemyTeam)
-        {
-            if (GameManager.speed < 0)
-            {
-                temp.animator.SetBool("canPush", true);
-
-                temp.animator.SetFloat("pushSpeed", -1 + GameManager.speed * 3f);
-            }
-            else if (GameManager.speed > 0)
-            {
-
-                temp.animator.SetBool("canPush", true);
-
-                temp.animator.SetFloat("pushSpeed", 1 + GameManager.speed * 3f);
-
-                Debug.Log("Animatio n speed  =  " + temp.animator.speed);
-            }
-            else
-            {
-                temp.animator.SetBool("canPush", false);
-                temp.animator.SetFloat("pushSpeed", 1 + GameManager.speed * 3f);
-            }
-        }
-
+            }                                                                
+            else                                                             
+            {                                                                
+                temp.animator.SetBool("canPush", false);                     
+                temp.animator.SetFloat("pushSpeed",1f+ GameManager.speed * 3f);
+            }                                                                
+                                                                             
+        }                                                                    
+        foreach (Enemy temp in GameManager.enemyTeam)                        
+        {                                                                    
+            if (GameManager.speed < 0)                                       
+            {                                                                
+                temp.animator.SetBool("canPush", true);                      
+                                                                             
+                temp.animator.SetFloat("pushSpeed", -0.5f- GameManager.speed * 2f);
+            }                                                                
+            else if (GameManager.speed > 0)                                  
+            {                                                                
+                                                                             
+                temp.animator.SetBool("canPush", true);                      
+                                                                             
+                temp.animator.SetFloat("pushSpeed", 0.5f+GameManager.speed * 2f);
+                                                                             
+           
+            }                                                                
+            else                                                             
+            {                                                                
+                temp.animator.SetBool("canPush", false);                     
+                temp.animator.SetFloat("pushSpeed", 0.5f + GameManager.speed * 2f);
+            }                                                                
+        }                                                                    
+                                                                             
     }
 
 }

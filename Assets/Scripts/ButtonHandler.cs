@@ -99,7 +99,7 @@ public class ButtonHandler : MonoBehaviour
                 GameManager.currentTeam[lowestLevelIndex].transform.localPosition = new Vector3(0, 0, 0);
                 if (lowestLevel * 2 == 2 || lowestLevel * 2 == 8)
                 {
-                    GameManager.currentTeam[lowestLevelIndex].particleDust.transform.localScale = (lowestLevel * 2) == 2 ? Vector3.one * 0.035f * 1.5f : Vector3.one * 0.035f * 2.0f;
+                   // GameManager.currentTeam[lowestLevelIndex].particleDust.transform.localScale = (lowestLevel * 2) == 2 ? Vector3.one * 0.035f * 1.5f : Vector3.one * 0.035f * 2.0f;
                     GameManager.currentTeam[lowestLevelIndex].transform.localScale =Vector3.one+( (lowestLevel * 2) == 2 ? Vector3.one * 0.2f : Vector3.one * 0.4f);
 
                 }
